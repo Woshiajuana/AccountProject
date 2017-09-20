@@ -184,18 +184,18 @@ let router = new Router({
  * 如果用户已经登录，则回跳到登录的页的时候，要转到首页
  * */
 router.beforeEach( (to, from, next) => {
-    var user = Tool.dataToSessionStorageOperate.achieve('user'),
-        token = Tool.dataToSessionStorageOperate.achieve('token');
-    if ((!token || !user) && to.path != '/login'){
-        next('/login');
-    } else if ( token && user && to.path == '/login'){
-        next('/list?tag=all');
-    } else if ( token && user && to.path == '/' && !to.query.tag) {
-        next('/list?tag=all');
-    } else {
-        next();
-    }
-    if( to.meta.tag_index ) Store.commit( types.SET_TAG_INDEX, to.meta.tag_index );
+    // var user = Tool.dataToSessionStorageOperate.achieve('user'),
+    //     token = Tool.dataToSessionStorageOperate.achieve('token');
+    // if ((!token || !user) && to.path != '/login'){
+    //     next('/login');
+    // } else if ( token && user && to.path == '/login'){
+    //     next('/list?tag=all');
+    // } else if ( token && user && to.path == '/' && !to.query.tag) {
+    //     next('/list?tag=all');
+    // } else {
+    //     next();
+    // }
+    // if( to.meta.tag_index ) Store.commit( types.SET_TAG_INDEX, to.meta.tag_index );
     next();
 });
 export default router
